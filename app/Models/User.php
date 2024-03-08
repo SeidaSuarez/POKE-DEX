@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
     ];
@@ -42,4 +43,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Definición de la relación uno a muchos con Pokemon
+    public function pokemons()
+    {
+        return $this->hasMany(Pokemon::class, 'user_id', 'users_id');
+    }
 }
