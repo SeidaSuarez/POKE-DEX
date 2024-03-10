@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('type',['Normal', 'Fire', 'Water', 'Electric', 'Grass', 'Ice', 'Fighting', 'Poison', 'Ground', 'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dark', 'Steele', 'Fairy', 'Dragon']);
             $table->enum('subtype',['Normal', 'Fire', 'Water', 'Electric', 'Grass', 'Ice', 'Fighting', 'Poison', 'Ground', 'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dark', 'Steele', 'Fairy', 'Dragon']);
             $table->enum('region',['Kanto', 'Johto', 'Sinnoh', 'Hisui', 'Paldea', 'Hoenn', 'Unova', 'Kalos', 'Alola', 'Galar']);
-            $table->foreignId('user_id')->references('users_id')->on('users');
+            $table->foreignId('user_id')->references('id')->on('users');
 
             $table->timestamps();
         });
