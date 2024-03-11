@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PokemonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [PokemonController::class, 'listAll']);
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('pokemon', PokemonController::class);
 });
+
 
 Route::get('/home', function () {
     return view('auth.dashboard');
-    })->middleware('auth', 'verified');
+})->middleware('auth', 'verified');

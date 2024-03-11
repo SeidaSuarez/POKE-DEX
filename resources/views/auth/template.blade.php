@@ -15,7 +15,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
-    @vite(['resources/js/app.js', 'resources/css/app.scss'])
+    @vite(['resources/css/app.scss', 'resources/js/app.js', 'resources/js/botonSeason.js', 'resources/js/alert.js'])
 </head>
 
 <body>
@@ -45,33 +45,33 @@
                                 </li>
                             @endif
                         @else
-                            {{-- @if (Auth::user()->email_verified_at) --}}
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{ Auth::user()->name }}
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="{{ route('logout') }}"
+                            @if (Auth::user()->email_verified_at)
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('pokemon.index') }}">Mis Pokemon</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                     </li>
                                 </ul>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
-                                {{-- @endif --}}
-                            </div>
-                        @endguest
-                    </ul>
-                </div>
+                            @endif
+                    </div>
+                @endguest
+                </ul>
             </div>
-        </nav>
+    </div>
+    </nav>
 
-        <main class="pt-4">
-            @yield('content')
-        </main>
+    <main class="pt-4">
+        @yield('content')
+    </main>
     </div>
 
+    @include('partials.footer')
 
 </body>
 
