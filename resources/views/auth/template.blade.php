@@ -48,10 +48,15 @@
                             @if (Auth::user()->email_verified_at)
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('pokemon.index') }}">Mis Pokemon</a>
+                                        <a class="nav-link active" href="{{ route('pokemon.index') }}">Mis Pokemon</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('logout') }}"
+                                    <li>
+                                        <a class="nav-link active" href="{{ url('/') }}">
+                                            All-Pokémon
+                                        </a>
+                                    </li>
+                                    <li class="nav-item bg-info rounded">
+                                        <a class="nav-link active rounded" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                     </li>
                                 </ul>
